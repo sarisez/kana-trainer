@@ -1,0 +1,113 @@
+.kana-learning-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.kana-learning-right-block {
+  height: 100%;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttons-container {
+  height: fit-content;
+  max-height: 350px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.choose-button {
+  background: var(--call-it-a-night);
+  width: 125px;
+  height: 60px;
+  border: none;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.choose-button:hover {
+  background: 
+    linear-gradient(var(--cold-steel-50), var(--cold-steel-50)),
+    var(--call-it-a-night);
+}
+
+.cb-main-text {
+  color: var(--whiteout);
+}
+
+.cb-secondary-text {
+  color: var(--live-jazz);
+}
+
+.kana-learning-left-block {
+  height: 100%;
+  padding: 20px 0;
+}
+
+.level-container {
+  width: 100%;
+  max-width: 702px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color: var(--call-it-a-night);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.symbol-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curent-symbol {
+  font-weight: 200;
+  font-size: 100px;
+}
+
+.result-message {
+  width: 100%;
+  max-width: 415px;
+  height: 50px;
+
+  border-radius: 20px;
+
+  position: absolute;
+  top: 60%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.result-message-red {
+  background: var(--red-20);
+  border: 1px solid var(--red-50);
+}
+
+.result-message-green {
+  background: var(--green-20);
+  border: 1px solid var(--green-50);
+}
+

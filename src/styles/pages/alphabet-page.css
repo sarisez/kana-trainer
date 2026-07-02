@@ -1,0 +1,58 @@
+.alphabet-container {
+  padding-top: 40px;
+  width: 1140px;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+
+  overflow: hidden;
+}
+
+.alphabet-item-container {
+  max-width: 705px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.alphabet-item-container-3 {
+  max-width: 415px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.alphabet-item {
+  width: 125px;
+  height: 70px;
+  background-color: hsla(44, 100%, 75%, 0.2);
+  border-radius: 20px;
+  padding: 15px;
+  font-weight: var(--light);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.alphabet-item-red .alphabet-item {
+  background-color: hsla(0, 100%, 76%, 0.2);
+}
+
+.alphabet-item-blue .alphabet-item {
+  background-color: hsla(215, 100%, 77%, 0.2);
+}
+
+.aic-mb-20 {
+  margin-bottom: 20px;
+}
+
+.aic-mt-90 {
+  margin-top: 90px;
+}
+
+.aic-mt-110 {
+  margin-top: 110px;
+}

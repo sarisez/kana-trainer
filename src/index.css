@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --whiteout: #FBFAFB;
+  --live-jazz: #86819E;
+  --luscious-purple: #625D73;
+  --coronation-blue: #594BA0;
+  --call-it-a-night: #41394F;
+  --cold-steel: #261F32;
+
+  --cold-steel-50: hsla(262, 23%, 16%, 0.5);
+  --red-50: hsla(6, 77%, 52%, 0.5);
+  --red-20: hsla(6, 77%, 52%, 0.2);
+  --green-50: hsla(89, 100%, 37%, 0.5);
+  --green-20: hsla(89, 100%, 37%, 0.2);
+
+  --light: 300;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cold-steel);
+
+  font-family: "Albert Sans", sans-serif;
+  color: var(--whiteout);
+  font-size: 16px;
+}
+
+#root {
+  max-width: 100%;
+}
+
+.container {
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 0 100px 0 120px;
+}

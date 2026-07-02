@@ -1,0 +1,34 @@
+.container {
+  min-width: 200px;
+  width: 395px;
+  height: 100%;
+  margin-right: 20px;
+  background-color: var(--call-it-a-night);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.symbol__info {
+  font-weight: 300;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.symbol__progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: var(--live-jazz);
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  
+  display: flex;
+}
+
+.symbol__progress::-webkit-progress-value, .symbol__progress::-moz-progress-bar {
+  background: var(--coronation-blue);
+  border-radius: 10px;
+}
