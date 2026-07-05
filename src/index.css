@@ -17,28 +17,48 @@ a {
 }
 
 :root {
-  --whiteout: #FBFAFB;
-  --live-jazz: #86819E;
-  --luscious-purple: #625D73;
-  --coronation-blue: #594BA0;
-  --call-it-a-night: #41394F;
-  --cold-steel: #261F32;
+  --color-background: #261F32;
+  --color-surface: #41394F;
+  --color-secondary: #625D73;
 
-  --cold-steel-50: hsla(262, 23%, 16%, 0.5);
-  --red-50: hsla(6, 77%, 52%, 0.5);
-  --red-20: hsla(6, 77%, 52%, 0.2);
-  --green-50: hsla(89, 100%, 37%, 0.5);
-  --green-20: hsla(89, 100%, 37%, 0.2);
+  --color-primary: #594BA0;
+
+  --color-text: #FBFAFB;
+  --color-text-secondary: #86819E;
+
+  --color-success-20: hsla(89, 100%, 37%, 0.2);
+  --color-success-50: hsla(89, 100%, 37%, 0.5);
+
+  --color-error-20: hsla(6, 77%, 52%, 0.2);
+  --color-error-50: hsla(6, 77%, 52%, 0.5);
+
+  --color-background-50: hsla(262, 23%, 16%, 0.5);
+  --color-surface-25: hsla(262, 16%, 27%, 0.25);
+
+  --color-progress-bar: var(--color-text-secondary);
 
   --light: 300;
 }
 
+[data-theme="light"] {
+  --color-background: #FBFAFB;
+  --color-surface: #CAC4E9;
+  --color-secondary: #625D73;
+
+  --color-primary: #594BA0;
+
+  --color-text: #261F32;
+  --color-text-secondary: #41394F;
+
+  --color-background-50: hsla(300, 11%, 98%, 0.5);
+  --color-surface-25: hsla(250, 46%, 84%, 0.25);
+
+  --color-progress-bar: var(--color-background);
+}
+
 body {
   margin: 0;
-  background-color: var(--cold-steel);
-
   font-family: "Albert Sans", sans-serif;
-  color: var(--whiteout);
   font-size: 16px;
 }
 

@@ -25,22 +25,22 @@
 .icon__img {
   width: 24px;
   height: 24px;
-  color: var(--live-jazz);
+  color: var(--color-text-secondary);
 }
 
 .active {
-  color: var(--whiteout)
+  color: var(--color-text)
 }
 
 .text {
-  color: var(--luscious-purple);
+  color: var(--color-secondary);
   margin-top: 10px;
   display: none;
   transition: display 2s 0.5s;
 }
 
 .text__active {
-  color: var(--live-jazz);
+  color: var(--color-text-secondary);
 }
 
 .icon:hover .text {

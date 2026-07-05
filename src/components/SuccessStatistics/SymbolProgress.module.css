@@ -3,7 +3,7 @@
   width: 395px;
   height: 100%;
   margin-right: 20px;
-  background-color: var(--call-it-a-night);
+  background-color: var(--color-surface);
   border-radius: 20px;
   padding: 20px;
 }
@@ -20,7 +20,7 @@
   height: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
-  background: var(--live-jazz);
+  background: var(--color-progress-bar);
   border: none;
   appearance: none;
   -webkit-appearance: none;
@@ -29,6 +29,6 @@
 }
 
 .symbol__progress::-webkit-progress-value, .symbol__progress::-moz-progress-bar {
-  background: var(--coronation-blue);
+  background: var(--color-primary);
   border-radius: 10px;
 }

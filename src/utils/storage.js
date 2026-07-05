@@ -5,6 +5,7 @@ const STORAGE_KEYS = {
   hiragana: "hiragana_learning_stats",
   katakana: "katakana_learning_stats",
   both: "both_learning_stats",
+  theme: "theme",
 };
 
 const getStorageKey = (mode) => STORAGE_KEYS[mode] ?? STORAGE_KEYS.both;
@@ -105,3 +106,16 @@ export const recordAnswer = (stats, symbol, isCorrect) => {
     },
   };
 };
+
+export function getTheme() {
+  const storedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+
+  if (storedTheme !== null)
+    return storedTheme === "light";
+  
+  return window.matchMedia("(prefers-color-scheme: light)").matches;
+}
+
+export function saveTheme(isLight) {
+  localStorage.setItem(STORAGE_KEYS.theme, isLight ? "light" : "dark");
+}
