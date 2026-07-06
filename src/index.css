@@ -41,7 +41,7 @@ a {
 }
 
 [data-theme="light"] {
-  --color-background: #FBFAFB;
+  --color-background: #F5F3FB;
   --color-surface: #CAC4E9;
   --color-secondary: #625D73;
 
@@ -64,10 +64,4 @@ body {
 
 #root {
   max-width: 100%;
-}
-
-.container {
-  height: 100dvh;
-  margin: 0 auto;
-  padding: 0 100px 0 120px;
 }

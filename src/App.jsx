@@ -6,9 +6,12 @@ import { KanaLearningPage } from './pages/KanaLearningPage'
 import { AlphabetPage } from './pages/AlphabetPage';
 
 import { ThemeToggle } from './components/ThemeToggle/ThemeToggle';
+import { MenuIcon } from './components/MenuIcon/MenuIcon.jsx';
 
 import { getTheme, saveTheme } from './utils/storage.js';
 
+import Alphabet from './assets/icons/Alphabet.jsx';
+import Training from './assets/icons/Training.jsx';
 import "./App.css";
 
 function App() {
@@ -22,17 +25,31 @@ function App() {
   return (
     <div className='App' data-theme={isLight ? "light" : "dark"}>
       <div className='menu'>
-        <div>
-          <div className='menu-item'>
-            <Link to='/alphabet' className='menu-item-text-icon'>abc</Link>
-          </div>
-          <div className='menu-item'>
-            <Link to='/kana-learning' className='menu-item-text-icon'>あ</Link>
-          </div>
+        <div className='menu-items'>
+          <Link to='/alphabet'><MenuIcon
+            icon={
+              <Alphabet
+                title="Alphabet"
+                titleId="alphabet-icon"
+                width={24}
+                height={24}
+              />
+            }
+          /></Link>
+          <Link to='/kana-learning'><MenuIcon
+            icon={
+              <Training
+                title="KanaLearning"
+                titleId="kana-learning-icon"
+                width={24}
+                height={24}
+              />
+            }
+          /></Link>
         </div>
-        <ThemeToggle 
+        <ThemeToggle
           isChecked={isLight}
-          handleChange={() => {setIsLight(!isLight)}}
+          handleChange={() => { setIsLight(!isLight) }}
         />
       </div>
       <div className='container'>

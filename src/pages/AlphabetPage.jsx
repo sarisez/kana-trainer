@@ -3,7 +3,6 @@ import { katakana } from "../data/katakana.js";
 
 import '../styles/pages/alphabet-page.css';
 
-
 function renderAlphabet(filterFn) {
   return hiragana
     .filter(filterFn)
