@@ -1,4 +1,5 @@
 import { useLearningSession } from "../hooks/useLearningSession.js";
+import { exportBackup, importBackup } from "../utils/backup.js";
 
 import { SymbolProgress } from "../components/SuccessStatistics/SymbolProgress.jsx";
 import { KanaLearningHeader } from "../components/KanaLearningHeader/KanaLearningHeader.jsx";
@@ -13,6 +14,8 @@ export function LearningSession({ mode }) {
     availableOptions,
     message,
     handleAnswer,
+    importUserStats,
+    resetProgress,
   } = useLearningSession(mode);
 
   const uniqueOptions = [
@@ -21,6 +24,21 @@ export function LearningSession({ mode }) {
     )
       .values(),
   ].reverse();
+
+  async function handleImport() {
+    const backup = await importBackup();
+
+    console.log(backup);
+
+    if (!backup) return;
+
+    if (backup.mode !== mode) {
+      console.log("backup.mode !== mode");
+      return;
+    }
+
+    importUserStats(backup.data);
+  }
 
   //Інтерфейс
   return (
@@ -33,6 +51,10 @@ export function LearningSession({ mode }) {
           <KanaLearningHeader
             mode={mode}
             level={userStats.level}
+            userStats={userStats}
+            onExport={() => exportBackup(mode, userStats)}
+            onImport={() => handleImport()}
+            onReset={() => resetProgress()}
           />
           <div className="symbol-container">
             <p className="curent-symbol">{currentSymbol.symbol}</p>

@@ -7,10 +7,11 @@ import HiraganaIcon from "../../assets/icons/HiraganaIcon.jsx";
 import BothIcon from "../../assets/icons/BothIcon.jsx";
 import ImportIcon from "../../assets/icons/ImportIcon.jsx";
 import ExportIcon from "../../assets/icons/ExportIcon.jsx";
+import Reset from "../../assets/icons/Reset.jsx";
 
 import styles from "./KanaLearningHeader.module.css";
 
-export function KanaLearningHeader({ mode, level }) {
+export function KanaLearningHeader({ mode, level, onExport, onImport, onReset }) {
   return (
     <div className={styles.container}>
       <div className={styles.modeSwitching}>
@@ -55,24 +56,39 @@ export function KanaLearningHeader({ mode, level }) {
         <p>Level {level}</p>
       </div>
       <div className={styles.actions}>
-        <HeaderIcon
-          icon={<ImportIcon
-            title="Import"
-            titleId="import-icon"
-            width={24}
-            height={24}
-          />}
-          text="Import"
-        />
-        <HeaderIcon
-          icon={<ExportIcon
-            title="Export"
-            titleId="expor-icon"
-            width={24}
-            height={24}
-          />}
-          text="Export"
-        />
+        <button onClick={() => onReset()} className={styles.button}>
+          <HeaderIcon
+            icon={<Reset
+              title="Reset"
+              titleId="reset-icon"
+              width={24}
+              height={24}
+            />}
+            text="Reset"
+          />
+        </button>
+        <button onClick={() => onImport()} className={styles.button}>
+          <HeaderIcon
+            icon={<ImportIcon
+              title="Import"
+              titleId="import-icon"
+              width={24}
+              height={24}
+            />}
+            text="Import"
+          />
+        </button>
+        <button onClick={() => onExport()} className={styles.button}>
+          <HeaderIcon
+            icon={<ExportIcon
+              title="Export"
+              titleId="expor-icon"
+              width={24}
+              height={24}
+            />}
+            text="Export"
+          />
+        </button>
       </div>
     </div>
   );

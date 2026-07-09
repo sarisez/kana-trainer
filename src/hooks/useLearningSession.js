@@ -3,10 +3,10 @@ import { useState, useMemo, useRef } from "react";
 import { getRandomSymbol, checkAnswer, getNewSymbol, levelUp } from "../utils/kanaUtils";
 import { hiragana } from "../data/hiragana.js";
 import { katakana } from "../data/katakana.js";
-import { getStats, recordAnswer, saveStats } from "../utils/storage.js";
+import { getStats, recordAnswer, saveStats, resetStats } from "../utils/storage.js";
 
 export function useLearningSession(mode) {
-  const requiredCorrectAnswers = 3;
+  const requiredCorrectAnswers = 10;
 
   const [userStats, setUserStats] = useState(() => getStats(mode));
 
@@ -72,11 +72,23 @@ export function useLearningSession(mode) {
     }, 1000);
   }
 
+  function importUserStats(userStats) {
+    setUserStats(userStats);
+    saveStats(mode, userStats);
+  }
+
+  function resetProgress() {
+    const initial = resetStats(mode);
+    setUserStats(initial);
+  }
+
   return {
     userStats,
     currentSymbol,
     availableOptions,
     message,
     handleAnswer,
+    importUserStats,
+    resetProgress,
   };
 }
