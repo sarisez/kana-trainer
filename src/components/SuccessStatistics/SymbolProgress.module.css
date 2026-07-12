@@ -6,6 +6,7 @@
   background-color: var(--color-surface);
   border-radius: 20px;
   padding: 20px;
+  padding-bottom: 0;
 
   overflow-y: scroll;
 }
@@ -17,20 +18,12 @@
   justify-content: space-between;
 }
 
-.symbol__progress {
-  width: 100%;
+.symbol__progress__body {
   height: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
-  background: var(--color-progress-bar);
-  border: none;
-  appearance: none;
-  -webkit-appearance: none;
-  
-  display: flex;
 }
 
-.symbol__progress::-webkit-progress-value, .symbol__progress::-moz-progress-bar {
-  background: var(--color-primary);
+.symbol__progress__line {
   border-radius: 10px;
 }

@@ -1,3 +1,5 @@
+import { ProgressBar } from "../ProgressBar/ProgressBar.jsx";
+
 import styles from "./SymbolProgress.module.css";
 
 export function SymbolProgress({ userStats }) {
@@ -10,7 +12,7 @@ export function SymbolProgress({ userStats }) {
         .filter(([, stat]) => stat.level <= userStats.level)
         .map(([symbol, stat]) => {
           const total = stat.correct + stat.mistakes;
-          const progress = total === 0 ? 0 : stat.correct / total;
+          const progress = (total === 0 ? 0 : stat.correct / total) * 100;
           return {
             symbol,
             progress,
@@ -23,9 +25,13 @@ export function SymbolProgress({ userStats }) {
             <div className={styles.symbol__info}>
               <div>{symbol}</div>
               <div>{stat.correct} / {stat.mistakes}</div>
-              <div>{(progress * 100).toFixed(0)}%</div>
+              <div>{progress.toFixed(0)}%</div>
             </div>
-            <progress value={progress} max={1} className={styles.symbol__progress} />
+            <ProgressBar 
+              progress = {progress}
+              className={styles.symbol__progress__body}
+              lineClassName={styles.symbol__progress__line}
+            />
           </div>
         ))}
     </div>

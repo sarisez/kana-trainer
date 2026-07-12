@@ -34,8 +34,15 @@ export function useLearningSession(mode) {
 
   const timeoutRef = useRef(null);
 
+  const [canAnswer, setCanAnswer] = useState(true);
+
   function handleAnswer(option) {
+    if (canAnswer === false)
+      return;
+
     const isCorrect = checkAnswer(option, currentSymbol);
+
+    setCanAnswer(false);
 
     setUserStats((prevStats) => {
       const updated = recordAnswer(prevStats, currentSymbol.symbol, isCorrect);
@@ -64,6 +71,8 @@ export function useLearningSession(mode) {
         };
 
         saveStats(mode, updated);
+        setCanAnswer(true);
+          
         return updated;
       });
 
