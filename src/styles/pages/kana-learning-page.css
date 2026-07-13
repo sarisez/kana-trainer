@@ -30,7 +30,6 @@
   background: var(--color-surface);
   width: 125px;
   height: 60px;
-  border: none;
   border-radius: 20px;
 
   display: flex;

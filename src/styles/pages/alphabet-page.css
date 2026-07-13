@@ -30,7 +30,6 @@
   background-color: hsla(44, 100%, 75%, 0.2);
   border-radius: 20px;
   padding: 15px;
-  font-weight: var(--light);
   
   display: flex;
   flex-direction: column;

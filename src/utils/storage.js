@@ -6,6 +6,7 @@ const STORAGE_KEYS = {
   katakana: "katakana_learning_stats",
   both: "both_learning_stats",
   theme: "theme",
+  language: "language",
 };
 
 const getStorageKey = (mode) => STORAGE_KEYS[mode] ?? STORAGE_KEYS.both;
@@ -118,4 +119,17 @@ export function getTheme() {
 
 export function saveTheme(isLight) {
   localStorage.setItem(STORAGE_KEYS.theme, isLight ? "light" : "dark");
+}
+
+export function getLanguage() {
+  const storedLanguage = localStorage.getItem(STORAGE_KEYS.language);
+ 
+  if (storedLanguage === null)
+    return "en";
+  else
+    return storedLanguage;
+}
+
+export function saveLanguage(language) {
+  localStorage.setItem(STORAGE_KEYS.language, language);
 }

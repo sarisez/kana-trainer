@@ -13,12 +13,9 @@ function renderAlphabet(filterFn) {
 
       return (
         <div className="alphabet-item" key={hiraganaItem.symbol}>
-          <p>
-            {hiraganaItem.symbol} / {katakanaItem?.symbol}
-          </p>
-          <p>
-            {hiraganaItem.ukrainian} / {hiraganaItem.romaji}
-          </p>
+          <p>{hiraganaItem.symbol} / {katakanaItem?.symbol}</p>
+          {/* <p>{hiraganaItem.translation} / {hiraganaItem.romaji}</p> */}
+          <p>{hiraganaItem.romaji}</p>
         </div>
       );
     });

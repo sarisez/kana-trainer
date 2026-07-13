@@ -1,0 +1,11 @@
+{
+  "hiragana-mode": "Hiragana",
+  "both-mode": "Both",
+  "katakana-mode": "Katakana",
+  "reset": "Reset",
+  "import": "Import",
+  "export": "Export", 
+  "level": "Level",
+  "correct-answer": "Correct!",
+  "wrong-answer": "Wrong. The correct answer is:"
+}

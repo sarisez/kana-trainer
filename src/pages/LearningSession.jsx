@@ -1,4 +1,5 @@
 import { useLearningSession } from "../hooks/useLearningSession.js";
+import { useLanguage } from "../hooks/useLanguage.js";
 import { exportBackup, importBackup } from "../utils/backup.js";
 
 import { SymbolProgress } from "../components/SuccessStatistics/SymbolProgress.jsx";
@@ -12,11 +13,13 @@ export function LearningSession({ mode }) {
     userStats,
     currentSymbol,
     availableOptions,
-    message,
+    feedback,
     handleAnswer,
     importUserStats,
     resetProgress,
   } = useLearningSession(mode);
+
+  const { t } = useLanguage();
 
   const uniqueOptions = [
     ...new Map(
@@ -40,6 +43,12 @@ export function LearningSession({ mode }) {
     importUserStats(backup.data);
   }
 
+  const message = feedback?.isCorrect
+    ? t("learning", "correct-answer")
+    : feedback
+      ? `${t("learning", "wrong-answer")} ${feedback.correctAnswer}`
+      : "";
+
   //Інтерфейс
   return (
     <>
@@ -59,9 +68,9 @@ export function LearningSession({ mode }) {
           <div className="symbol-container">
             <p className="curent-symbol">{currentSymbol.symbol}</p>
           </div>
-          {message &&
+          {feedback &&
             <div
-              className={`result-message ${message === "Правильно!"
+              className={`result-message ${feedback.isCorrect === true
                 ? "result-message-green"
                 : "result-message-red"
                 }`}>
@@ -75,8 +84,9 @@ export function LearningSession({ mode }) {
                 className="choose-button"
                 onClick={() => handleAnswer(option)}
               >
-                <p className="cb-main-text">{option.ukrainian}</p>
-                <p className="cb-secondary-text">{option.romaji}</p>
+                {/* <p className="cb-main-text">{option.translation}</p>
+                <p className="cb-secondary-text">{option.romaji}</p> */}
+                <p className="cb-main-text">{option.romaji}</p>
               </button>
             ))}
           </div>

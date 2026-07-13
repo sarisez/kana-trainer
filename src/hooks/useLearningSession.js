@@ -30,11 +30,11 @@ export function useLearningSession(mode) {
     getRandomSymbol(availableOptions)
   );
 
-  const [message, setMessage] = useState("");
-
   const timeoutRef = useRef(null);
 
   const [canAnswer, setCanAnswer] = useState(true);
+
+  const [feedback, setFeedback] = useState(null);
 
   function handleAnswer(option) {
     if (canAnswer === false)
@@ -51,11 +51,16 @@ export function useLearningSession(mode) {
       return updated;
     });
 
-    const msg = isCorrect
-      ? "Правильно!"
-      : `Неправильно. Правильна відповідь: ${currentSymbol.ukrainian} / ${currentSymbol.romaji}`;
+    isCorrect
+      ? setFeedback({
+        isCorrect: true,
+      })
+      : setFeedback({
+        isCorrect: false,
+        correctAnswer: currentSymbol.romaji,
+      });;
 
-    setMessage(msg);
+    // : `Неправильно. Правильна відповідь: ${currentSymbol.translation} / ${currentSymbol.romaji}`;
 
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -72,12 +77,12 @@ export function useLearningSession(mode) {
 
         saveStats(mode, updated);
         setCanAnswer(true);
-          
+
         return updated;
       });
 
       setCurrentSymbol((prev) => getNewSymbol(prev, availableOptions));
-      setMessage("");
+      setFeedback(null);
     }, 1000);
   }
 
@@ -95,7 +100,7 @@ export function useLearningSession(mode) {
     userStats,
     currentSymbol,
     availableOptions,
-    message,
+    feedback,
     handleAnswer,
     importUserStats,
     resetProgress,

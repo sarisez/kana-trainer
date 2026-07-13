@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { HeaderIcon } from "./KanaLearningHeaderIcon.jsx";
+import { useLanguage } from "../../hooks/useLanguage.js";
 
 import KatakanaIcon from "../../assets/icons/KatakanaIcon.jsx";
 import HiraganaIcon from "../../assets/icons/HiraganaIcon.jsx";
@@ -12,6 +13,8 @@ import Reset from "../../assets/icons/Reset.jsx";
 import styles from "./KanaLearningHeader.module.css";
 
 export function KanaLearningHeader({ mode, level, onExport, onImport, onReset }) {
+  const { t } = useLanguage();
+ 
   return (
     <div className={styles.container}>
       <div className={styles.modeSwitching}>
@@ -23,7 +26,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Hiragana"
+            text={t("learning", "hiragana-mode")}
             active={mode === "hiragana"}
           />
         </Link>
@@ -35,7 +38,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Both"
+            text={t("learning", "both-mode")}
             active={mode === "both"}
           />
         </Link>
@@ -47,16 +50,16 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Katakana"
+            text={t("learning", "katakana-mode")}
             active={mode === "katakana"}
           />
         </Link>
       </div>
       <div className="level-container">
-        <p>Level {level}</p>
+        <p>{t("learning", "level")} {level}</p>
       </div>
       <div className={styles.actions}>
-        <button onClick={() => onReset()} className={styles.button}>
+        <button onClick={() => onReset()}>
           <HeaderIcon
             icon={<Reset
               title="Reset"
@@ -64,10 +67,10 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Reset"
+            text={t("learning", "reset")}
           />
         </button>
-        <button onClick={() => onImport()} className={styles.button}>
+        <button onClick={() => onImport()}>
           <HeaderIcon
             icon={<ImportIcon
               title="Import"
@@ -75,10 +78,10 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Import"
+            text={t("learning", "import")}
           />
         </button>
-        <button onClick={() => onExport()} className={styles.button}>
+        <button onClick={() => onExport()}>
           <HeaderIcon
             icon={<ExportIcon
               title="Export"
@@ -86,7 +89,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
               width={24}
               height={24}
             />}
-            text="Export"
+            text={t("learning", "export")}
           />
         </button>
       </div>
