@@ -7,7 +7,6 @@
 .kana-learning-right-block {
   height: 100%;
   width: 100%;
-  padding: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,7 +53,6 @@
 
 .kana-learning-left-block {
   height: 100%;
-  padding: 20px 0;
 }
 
 .level-container {

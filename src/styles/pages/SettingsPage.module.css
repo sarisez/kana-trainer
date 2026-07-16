@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  max-width: 850px;
+  background-color: var(--color-surface);
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 20px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.container h2 {
+  color: var(--color-text-secondary);
+  font-weight: var(--medium);
+  margin-bottom: 20px;
+}

@@ -4,15 +4,16 @@ import { useState, useEffect } from 'react';
 
 import { KanaLearningPage } from './pages/KanaLearningPage'
 import { AlphabetPage } from './pages/AlphabetPage';
+import { SettingsPage } from './pages/SettingsPage.jsx';
 
 import { ThemeToggle } from './components/ThemeToggle/ThemeToggle';
 import { MenuIcon } from './components/MenuIcon/MenuIcon.jsx';
 
 import { getTheme, saveTheme } from './utils/storage.js';
-import { useLanguage } from './hooks/useLanguage.js';
 
 import Alphabet from './assets/icons/Alphabet.jsx';
 import Training from './assets/icons/Training.jsx';
+import Settings from './assets/icons/Settings.jsx';
 import "./App.css";
 
 function App() {
@@ -22,8 +23,6 @@ function App() {
   useEffect(() => {
     saveTheme(isLight);
   }, [isLight]);
-
-  const { language, setLanguage } = useLanguage();
 
   return (
     <div className='App' data-theme={isLight ? "light" : "dark"}>
@@ -51,28 +50,30 @@ function App() {
           /></Link>
         </div>
         <div className='menu-items'>
-          <MenuIcon
-            icon={
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                style={{ color: "black" }}
-              >
-                <option value="ua">Українська</option>
-                <option value="en">English</option>
-              </select>
-            }
-          />
           <ThemeToggle
             isChecked={isLight}
             handleChange={() => { setIsLight(!isLight) }}
           />
+          <Link to='/settings'><MenuIcon
+            icon={
+              <Settings
+                title="Settings"
+                titleId="settings-icon"
+                width={24}
+                height={24}
+              />
+            }
+          /></Link>
         </div>
       </div>
       <div className='container'>
         <Routes>
           <Route path='/kana-learning' element={<KanaLearningPage />} />
           <Route path='/alphabet' element={<AlphabetPage />} />
+          <Route path='/settings' element={<SettingsPage 
+            isLight = {isLight}
+            setIsLight = {setIsLight}
+          />} />
         </Routes>
       </div>
     </ div>

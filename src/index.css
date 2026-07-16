@@ -55,6 +55,7 @@ button {
   --color-progress-bar: var(--color-text-secondary);
 
   --light: 300;
+  --medium: 500;
 }
 
 [data-theme="light"] {
