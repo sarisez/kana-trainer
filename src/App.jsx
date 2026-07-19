@@ -28,6 +28,7 @@ function App() {
       
       <div className='container'>
         <Routes>
+          <Route path='/' element={<KanaLearningPage />} />
           <Route path='/kana-learning' element={<KanaLearningPage />} />
           <Route path='/alphabet' element={<AlphabetPage />} />
           <Route path='/settings' element={<SettingsPage 
