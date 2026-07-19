@@ -1,14 +1,18 @@
 .container {
-  min-width: 200px;
   width: 395px;
   height: 100%;
   margin-right: 20px;
   background-color: var(--color-surface);
   border-radius: 20px;
-  padding: 20px;
   padding-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
 
-  overflow-y: scroll;
+.scrollBox {
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .symbol__info {
@@ -25,4 +29,55 @@
 
 .symbol__progress__line {
   border-radius: 10px;
+}
+
+.openButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  color: var(--color-secondary);
+}
+
+.closeButton {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 10px);
+  transform: translateY(-50%);
+  z-index: 1;
+
+  color: var(--color-secondary);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    height: calc(100% - 40px);
+    width: 50%;
+
+    border: 1px solid var(--color-background);
+    box-shadow: 10px 0px 10px 0px var(--color-background-50);
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media (max-height: 1000px) {
+  .openButton {
+    top: 40%
+  }
+}
+
+@media (max-height: 800px) {
+  .openButton {
+    top: 35%
+  }
 }

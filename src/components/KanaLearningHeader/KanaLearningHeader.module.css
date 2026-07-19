@@ -48,3 +48,28 @@
 .icon:hover .text {
   display: block;
 }
+
+.level {
+  width: 100%;
+  max-width: 702px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color: var(--color-surface);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .actions {
+    display: none;
+  }
+  .container {
+    flex-direction: column-reverse;
+    height: fit-content;
+    gap: 20px;
+  }
+}

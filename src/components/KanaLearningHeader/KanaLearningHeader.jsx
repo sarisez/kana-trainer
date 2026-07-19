@@ -55,7 +55,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
           />
         </Link>
       </div>
-      <div className="level-container">
+      <div className={styles.level}>
         <p>{t("learning", "level")} {level}</p>
       </div>
       <div className={styles.actions}>

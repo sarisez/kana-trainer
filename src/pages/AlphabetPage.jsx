@@ -1,7 +1,7 @@
 import { hiragana } from "../data/hiragana.js";
 import { katakana } from "../data/katakana.js";
 
-import '../styles/pages/alphabet-page.css';
+import styles from '../styles/pages/AlphabetPage.module.css';
 
 function renderAlphabet(filterFn) {
   return hiragana
@@ -12,7 +12,7 @@ function renderAlphabet(filterFn) {
       );
 
       return (
-        <div className="alphabet-item" key={hiraganaItem.symbol}>
+        <div className={styles.item} key={hiraganaItem.symbol}>
           <p>{hiraganaItem.symbol} / {katakanaItem?.symbol}</p>
           {/* <p>{hiraganaItem.translation} / {hiraganaItem.romaji}</p> */}
           <p>{hiraganaItem.romaji}</p>
@@ -24,40 +24,42 @@ function renderAlphabet(filterFn) {
 export function AlphabetPage() {
   return (
     <>
-      <div className="alphabet-container">
-        <div className="alphabet-left-column">
-          <div className="alphabet-item-container aic-mb-20">
-            {renderAlphabet(item => item.level <= 7)}
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <div className={styles.leftColumn}>
+            <div className={styles.items}>
+              {renderAlphabet(item => item.level <= 7)}
+            </div>
+
+            <div className={styles.items}>
+              {renderAlphabet(item => item.level === 8)}
+            </div>
+
+            <div className={styles.items}>
+              {renderAlphabet(item => item.level === 9)}
+            </div>
+
+            <div className={styles.items}>
+              {renderAlphabet(item => item.level === 10)}
+            </div>
+
+            <div className={`${styles.items} ${styles.item__red}`}>
+              {renderAlphabet(item => item.level >= 11 && item.level <= 15)}
+            </div>
           </div>
 
-          <div className="alphabet-item-container aic-mb-20">
-            {renderAlphabet(item => item.level === 8)}
-          </div>
+          <div className={styles.rightColumn}>
+            <div className={styles.itemsThreeInRow}>
+              {renderAlphabet(item => item.level >= 16 && item.level <= 21)}
+            </div>
 
-          <div className="alphabet-item-container aic-mb-20">
-            {renderAlphabet(item => item.level === 9)}
-          </div>
+            <div className={styles.itemsThreeInRow}>
+              {renderAlphabet(item => item.level === 22)}
+            </div>
 
-          <div className="alphabet-item-container aic-mb-20">
-            {renderAlphabet(item => item.level === 10)}
-          </div>
-
-          <div className="alphabet-item-container alphabet-item-red">
-            {renderAlphabet(item => item.level >= 11 && item.level <= 15)}
-          </div>
-        </div>
-
-        <div className="alphabet-right-column alphabet-item-blue">
-          <div className="alphabet-item-container-3 aic-mt-90">
-            {renderAlphabet(item => item.level >= 16 && item.level <= 21)}
-          </div>
-
-          <div className="alphabet-item-container-3 aic-mt-110">
-            {renderAlphabet(item => item.level === 22)}
-          </div>
-
-          <div className="alphabet-item-container-3 aic-mt-110">
-            {renderAlphabet(item => item.level >= 23 && item.level <= 26)}
+            <div className={styles.itemsThreeInRow}>
+              {renderAlphabet(item => item.level >= 23 && item.level <= 26)}
+            </div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { exportBackup, importBackup } from "../utils/backup.js";
 import { SymbolProgress } from "../components/SuccessStatistics/SymbolProgress.jsx";
 import { KanaLearningHeader } from "../components/KanaLearningHeader/KanaLearningHeader.jsx";
 
-import '../styles/pages/kana-learning-page.css';
+import styles from "../styles/pages/KanaLearningPage.module.css";
 
 export function LearningSession({ mode }) {
 
@@ -52,11 +52,11 @@ export function LearningSession({ mode }) {
   //Інтерфейс
   return (
     <>
-      <div className="kana-learning-container">
+      <div className={styles.container}>
         <div className="kana-learning-left-block">
           <SymbolProgress userStats={userStats} />
         </div>
-        <div className="kana-learning-right-block">
+        <div className={styles.rightBlock}>
           <KanaLearningHeader
             mode={mode}
             level={userStats.level}
@@ -65,28 +65,29 @@ export function LearningSession({ mode }) {
             onImport={() => handleImport()}
             onReset={() => resetProgress()}
           />
-          <div className="symbol-container">
-            <p className="curent-symbol">{currentSymbol.symbol}</p>
+          <div className={styles.symbol__container}>
+            <p className={styles.symbol__curent}>{currentSymbol.symbol}</p>
+            {feedback &&
+              <div
+                className={`${styles.resultMessage} ${feedback.isCorrect
+                  ? styles.resultMessage__green
+                  : styles.resultMessage__red
+                  }`}
+              >
+                {message}
+              </div>
+            }
           </div>
-          {feedback &&
-            <div
-              className={`result-message ${feedback.isCorrect === true
-                ? "result-message-green"
-                : "result-message-red"
-                }`}>
-              {message}
-            </div>
-          }
-          <div className="buttons-container">
+          <div className={styles.buttons}>
             {uniqueOptions.map((option, index) => (
               <button
                 key={`${option.romaji}-${index}`}
-                className="choose-button"
+                className={styles.button}
                 onClick={() => handleAnswer(option)}
               >
                 {/* <p className="cb-main-text">{option.translation}</p>
                 <p className="cb-secondary-text">{option.romaji}</p> */}
-                <p className="cb-main-text">{option.romaji}</p>
+                <p className={styles.button__text__main}>{option.romaji}</p>
               </button>
             ))}
           </div>
