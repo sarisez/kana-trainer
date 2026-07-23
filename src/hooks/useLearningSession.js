@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef } from "react";
 
-import { getRandomSymbol, checkAnswer, getNewSymbol, levelUp } from "../utils/kanaUtils";
+import { getRandomSymbol, checkAnswer, getNewSymbol, levelUp, getLeastCorrectSymbol, getWorstWinRateSymbol } from "../utils/kanaUtils";
 import { hiragana } from "../data/hiragana.js";
 import { katakana } from "../data/katakana.js";
 import { getStats, recordAnswer, saveStats, resetStats } from "../utils/storage.js";
@@ -27,7 +27,11 @@ export function useLearningSession(mode) {
   }, [options, userStats.level]);
 
   const [currentSymbol, setCurrentSymbol] = useState(() =>
-    getRandomSymbol(availableOptions)
+    getRandomSymbol(
+      availableOptions, 
+      getWorstWinRateSymbol(userStats), 
+      getLeastCorrectSymbol(userStats)
+    )
   );
 
   const timeoutRef = useRef(null);
@@ -81,7 +85,12 @@ export function useLearningSession(mode) {
         return updated;
       });
 
-      setCurrentSymbol((prev) => getNewSymbol(prev, availableOptions));
+      setCurrentSymbol((prev) => getNewSymbol(
+        prev, 
+        availableOptions, 
+        getWorstWinRateSymbol(userStats), 
+        getLeastCorrectSymbol(userStats)
+      ));
       setFeedback(null);
     }, 1000);
   }
@@ -93,7 +102,20 @@ export function useLearningSession(mode) {
 
   function resetProgress() {
     const initial = resetStats(mode);
+
+    const newAvailableOptions = options.filter(
+      o => o.level <= initial.level
+    );
+
     setUserStats(initial);
+
+    setCurrentSymbol(
+      getRandomSymbol(
+        newAvailableOptions,
+        getWorstWinRateSymbol(initial),
+        getLeastCorrectSymbol(initial)
+      )
+    );
   }
 
   return {

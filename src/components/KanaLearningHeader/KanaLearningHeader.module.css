@@ -1,6 +1,6 @@
 .container {
   height: 40px;
-  padding: 0 22px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,5 +71,6 @@
     flex-direction: column-reverse;
     height: fit-content;
     gap: 20px;
+    padding: 0;
   }
 }
