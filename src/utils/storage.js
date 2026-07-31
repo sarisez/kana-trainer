@@ -7,6 +7,7 @@ const STORAGE_KEYS = {
   both: "both_learning_stats",
   theme: "theme",
   language: "language",
+  transliteration: "transliteration",
 };
 
 const getStorageKey = (mode) => STORAGE_KEYS[mode] ?? STORAGE_KEYS.both;
@@ -132,4 +133,17 @@ export function getLanguage() {
 
 export function saveLanguage(language) {
   localStorage.setItem(STORAGE_KEYS.language, language);
+}
+
+export function getTransliteration() {
+  const storedTranslit = localStorage.getItem(STORAGE_KEYS.transliteration);
+
+  if (storedTranslit === null)
+    return "none";
+  
+  return storedTranslit
+}
+
+export function saveTransliteration(transliteration) {
+  localStorage.setItem(STORAGE_KEYS.transliteration, transliteration);
 }

@@ -4,7 +4,10 @@ import { Select } from "../components/Select/Select";
 
 import styles from "../styles/pages/SettingsPage.module.css"
 
-export function SettingsPage({ isLight, setIsLight }) {
+export function SettingsPage({ 
+  isLight, setIsLight,
+  transliteration, setTransliteration
+}) {
   const { language, setLanguage, t } = useLanguage();
 
   return (
@@ -31,6 +34,18 @@ export function SettingsPage({ isLight, setIsLight }) {
             { value: "dark", label: `${t("settings", "dark")}` },
           ]}
           onChange={(value) => setIsLight(value === "light")}
+        />
+      </section>
+
+      <section>
+        <h2>{t("settings", "transliteration")}</h2>
+        <Select
+          value={transliteration}
+          options={[
+            { value: "none", label: `${t("settings", "none")}` },
+            { value: "kovalenko", label: "Українська — Коваленко" },
+          ]}
+          onChange={setTransliteration}
         />
       </section>
 

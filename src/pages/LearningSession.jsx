@@ -5,9 +5,11 @@ import { exportBackup, importBackup } from "../utils/backup.js";
 import { SymbolProgress } from "../components/SuccessStatistics/SymbolProgress.jsx";
 import { KanaLearningHeader } from "../components/KanaLearningHeader/KanaLearningHeader.jsx";
 
+import { transliterations } from "../data/transliteration/index.js";
+
 import styles from "../styles/pages/KanaLearningPage.module.css";
 
-export function LearningSession({ mode }) {
+export function LearningSession({ mode, transliteration }) {
 
   const {
     userStats,
@@ -49,7 +51,11 @@ export function LearningSession({ mode }) {
       ? `${t("learning", "wrong-answer")} ${feedback.correctAnswer}`
       : "";
 
-  //Інтерфейс
+  const translitTable =
+    transliteration === "none"
+      ? null
+      : transliterations[transliteration];
+
   return (
     <>
       <div className={styles.container}>
@@ -85,9 +91,14 @@ export function LearningSession({ mode }) {
                 className={styles.button}
                 onClick={() => handleAnswer(option)}
               >
-                {/* <p className="cb-main-text">{option.translation}</p>
-                <p className="cb-secondary-text">{option.romaji}</p> */}
-                <p className={styles.button__text__main}>{option.romaji}</p>
+                <p className={styles.button__text__main}>
+                  {option.romaji}
+                </p>
+                {translitTable &&
+                  <p className={styles.button__text__secondary}>
+                    {translitTable[option.romaji] ?? option.romaji}
+                  </p>
+                }
               </button>
             ))}
           </div>

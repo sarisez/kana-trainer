@@ -2,9 +2,13 @@ import { useSearchParams } from "react-router-dom";
 
 import { LearningSession } from "./LearningSession.jsx";
 
-export function KanaLearningPage() {
+export function KanaLearningPage({ transliteration }) {
   const [searchParams] = useSearchParams();
   const mode = searchParams.get("mode") ?? "hiragana";
-  
-  return <LearningSession key={mode} mode={mode} />;
+
+  return <LearningSession
+    key={mode}
+    mode={mode}
+    transliteration={transliteration}
+  />;
 }
