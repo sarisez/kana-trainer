@@ -1,4 +1,5 @@
 .container {
+  height: 100%;
   width: 100%;
   max-width: 850px;
   background-color: var(--color-surface);
@@ -6,14 +7,39 @@
   padding: 40px;
   border-radius: 20px;
 
-  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
+.container section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
 .container h2 {
   color: var(--color-text-secondary);
   font-weight: var(--medium);
-  margin-bottom: 20px;
+}
+
+.toggle {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 450px) {
+  .container {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .container section {
+    gap: 15px;
+  }
 }

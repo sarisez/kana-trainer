@@ -4,5 +4,8 @@
   "light": "Light",
   "dark": "Dark",
   "transliteration": "Transliteration",
-  "none": "None"
+  "none": "None",
+  "text-input": "Text input",
+  "enable-text-input": "Enable text input",
+  "input-suggestions": "Input suggestions"
 }

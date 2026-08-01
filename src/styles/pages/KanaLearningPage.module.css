@@ -92,14 +92,124 @@
   border: 1px solid var(--color-success-50);
 }
 
+.textInput {  
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textInputWithSuggestions {
+  height: 350px;
+}
+
+.textInput__input {
+  width: 100%;
+  max-width: 1285px;
+
+  display: flex;
+  gap: 20px;
+}
+
+.textInput__input input {
+  height: 50px;
+  width: 100%;
+  padding: 0 20px;
+  
+  border: none;
+  border-radius: 20px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.textInput__input input::placeholder {
+  color: var(--color-secondary);
+}
+
+.textInput__input button {
+  width: 270px;
+  height: 50px;
+  padding: 0 20px;
+
+  border-radius: 20px;
+  background-color: var(--color-primary);
+  color: #FBFAFB;
+}
+
+.textInput__input input:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+.suggestions__wrapper {
+  width: 100%;
+  max-width: 1285px;
+  margin-bottom: 20px;
+
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.suggestions {
+  max-height: 100%;
+  border-radius: 20px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 20px;
+}
+
+.suggestion {
+  background: var(--color-surface);
+  width: auto;
+  height: 60px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.suggestion:hover {
+  background:
+    linear-gradient(var(--color-background-50), var(--color-background-50)),
+    var(--color-surface);
+}
+
 @media (max-width: 400px) {
-  .buttons {
+  .buttons, .suggestions {
     gap: 10px;
+  }
+
+  .textInput__input {
+    gap: 10px;
+  }
+
+  .suggestions__wrapper {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .textInput__input {
+    flex-direction: column;
+  }
+
+  .textInput__input button {
+    width: 100%;
   }
 }
 
 @media (max-width: 500px) {
-  .buttons {
+  .buttons, .suggestions {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 }
@@ -107,6 +217,10 @@
 @media (max-height: 900px) {
   .buttons {
     max-height: 300px;
+  }
+
+  .textInput {
+    height: 300px;
   }
 
   .resultMessage {
@@ -119,6 +233,10 @@
 @media (max-height: 800px) {
   .buttons {
     max-height: 200px;
+  }
+
+  .textInput {
+    height: 200px;
   }
 
   .resultMessage {

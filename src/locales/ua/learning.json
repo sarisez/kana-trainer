@@ -7,5 +7,7 @@
   "export": "Експортувати",
   "level": "Рівень",
   "correct-answer": "Правильно!",
-  "wrong-answer": "Неправильно. Правильна відповідь:"
+  "wrong-answer": "Неправильно. Правильна відповідь:",
+  "text-input-button": "Підтвердити",
+  "text-input-placeholder": "Ваша відповідь"
 }

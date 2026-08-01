@@ -4,8 +4,10 @@
   "katakana-mode": "Katakana",
   "reset": "Reset",
   "import": "Import",
-  "export": "Export", 
+  "export": "Export",
   "level": "Level",
   "correct-answer": "Correct!",
-  "wrong-answer": "Wrong. The correct answer is:"
+  "wrong-answer": "Wrong. The correct answer is:",
+  "text-input-button": "Submit",
+  "text-input-placeholder": "Your answer"
 }

@@ -4,5 +4,8 @@
   "light": "Світла",
   "dark": "Темна",
   "transliteration": "Транслітерація",
-  "none": "Ніякої"
+  "none": "Ніякої",
+  "text-input": "Текстове введення",
+  "enable-text-input": "Увімкнути текстове введення",
+  "input-suggestions": "Пропозиції введення"
 }

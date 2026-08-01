@@ -9,7 +9,8 @@ import { Menu } from './components/Menu/Menu.jsx';
 
 import { 
   getTheme, saveTheme, 
-  getTransliteration, saveTransliteration 
+  getTransliteration, saveTransliteration,
+  getTextInputSettings, updateTextInputSettings
 } from './utils/storage.js';
 
 import "./App.css";
@@ -28,6 +29,17 @@ function App() {
     saveTransliteration(transliteration);
   }, [transliteration]);
 
+  const [textInputSettings, setTextInputSettings] = useState(getTextInputSettings);
+
+  const updateSettings = (partial) => {
+    setTextInputSettings(prev => ({
+      ...prev,
+      ...partial,
+    }));
+
+    updateTextInputSettings(partial);
+  };
+
   return (
     <div className='App' data-theme={isLight ? "light" : "dark"}>
       <Menu
@@ -37,14 +49,16 @@ function App() {
 
       <div className='container'>
         <Routes>
-          <Route path='/' element={<KanaLearningPage transliteration={transliteration} />} />
-          <Route path='/kana-learning' element={<KanaLearningPage transliteration={transliteration} />} />
+          <Route path='/' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
+          <Route path='/kana-learning' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
           <Route path='/alphabet' element={<AlphabetPage />} />
           <Route path='/settings' element={<SettingsPage
             isLight={isLight}
             setIsLight={setIsLight}
             transliteration={transliteration}
             setTransliteration={setTransliteration}
+            textInputSettings={textInputSettings}
+            updateTextInputSettings={updateSettings}
           />} />
         </Routes>
       </div>

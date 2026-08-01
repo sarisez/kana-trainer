@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import { useLearningSession } from "../hooks/useLearningSession.js";
 import { useLanguage } from "../hooks/useLanguage.js";
 import { exportBackup, importBackup } from "../utils/backup.js";
@@ -9,7 +10,7 @@ import { transliterations } from "../data/transliteration/index.js";
 
 import styles from "../styles/pages/KanaLearningPage.module.css";
 
-export function LearningSession({ mode, transliteration }) {
+export function LearningSession({ mode, transliteration, textInputSettings }) {
 
   const {
     userStats,
@@ -56,6 +57,18 @@ export function LearningSession({ mode, transliteration }) {
       ? null
       : transliterations[transliteration];
 
+  const [currentInputText, setCurrentInputText] = useState("");
+
+  const suggestions = useMemo(() => {
+    const text = currentInputText.trim().toLowerCase();
+
+    if (!text) return [];
+
+    return availableOptions.filter(option =>
+      option.romaji.includes(text)
+    );
+  }, [currentInputText, availableOptions]);
+
   return (
     <>
       <div className={styles.container}>
@@ -84,24 +97,90 @@ export function LearningSession({ mode, transliteration }) {
               </div>
             }
           </div>
-          <div className={styles.buttons}>
-            {uniqueOptions.map((option, index) => (
-              <button
-                key={`${option.romaji}-${index}`}
-                className={styles.button}
-                onClick={() => handleAnswer(option)}
+
+          {textInputSettings.enabled
+            ? (
+              <div
+                className={`
+                  ${styles.textInput} 
+                  ${textInputSettings.suggestions
+                    ? styles.textInputWithSuggestions : ""
+                  }`}
               >
-                <p className={styles.button__text__main}>
-                  {option.romaji}
-                </p>
-                {translitTable &&
-                  <p className={styles.button__text__secondary}>
-                    {translitTable[option.romaji] ?? option.romaji}
-                  </p>
-                }
-              </button>
-            ))}
-          </div>
+                {textInputSettings.suggestions &&
+                  <div className={styles.suggestions__wrapper}>
+                    <div className={styles.suggestions}>
+                      {suggestions?.map((option, index) => (
+                        <button
+                          key={`${option.romaji}-${index}`}
+                          className={styles.suggestion}
+                          onClick={() => {
+                            handleAnswer(option);
+                            setCurrentInputText("");
+                          }}
+                        >
+                          <p className={styles.button__text__main}>
+                            {option.romaji}
+                          </p>
+                          {translitTable &&
+                            <p className={styles.button__text__secondary}>
+                              {translitTable[option.romaji] ?? option.romaji}
+                            </p>
+                          }
+                        </button>
+                      ))}
+                    </div>
+                  </div>}
+                <div className={styles.textInput__input}>
+                  <input
+                    type="text"
+                    value={currentInputText}
+                    onChange={(e) => setCurrentInputText(e.target.value)}
+                    placeholder={t("learning", "text-input-placeholder")}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && currentInputText !== "") {
+                        handleAnswer({ romaji: currentInputText });
+                        setCurrentInputText("");
+                      }
+                    }}
+                  />
+                  {!textInputSettings.suggestions &&
+                    <button
+                      onClick={() => {
+                        if (currentInputText !== "") {
+                          handleAnswer({ romaji: currentInputText });
+                          setCurrentInputText("");
+                        }
+                      }}
+                    >
+                      {t("learning", "text-input-button")}
+                    </button>
+                  }
+                </div>
+              </div>
+            )
+            : (
+              <div className={styles.buttons}>
+                {uniqueOptions.map((option, index) => (
+                  <button
+                    key={`${option.romaji}-${index}`}
+                    className={styles.button}
+                    onClick={() => handleAnswer(option)}
+                  >
+                    <p className={styles.button__text__main}>
+                      {option.romaji}
+                    </p>
+                    {translitTable &&
+                      <p className={styles.button__text__secondary}>
+                        {translitTable[option.romaji] ?? option.romaji}
+                      </p>
+                    }
+                  </button>
+                ))}
+              </div>
+            )
+          }
+
         </div>
 
       </div>

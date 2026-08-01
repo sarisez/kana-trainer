@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
   theme: "theme",
   language: "language",
   transliteration: "transliteration",
+  textInput: "text-input",
 };
 
 const getStorageKey = (mode) => STORAGE_KEYS[mode] ?? STORAGE_KEYS.both;
@@ -146,4 +147,40 @@ export function getTransliteration() {
 
 export function saveTransliteration(transliteration) {
   localStorage.setItem(STORAGE_KEYS.transliteration, transliteration);
+}
+
+const DEFAULT_TEXT_INPUT_SETTINGS = {
+  enabled: false,
+  suggestions: true,
+};
+
+export function getTextInputSettings() {
+  const stored = localStorage.getItem(STORAGE_KEYS.textInput);
+
+  if (stored === null) {
+    return DEFAULT_TEXT_INPUT_SETTINGS;
+  }
+
+  try {
+    return {
+      ...DEFAULT_TEXT_INPUT_SETTINGS,
+      ...JSON.parse(stored),
+    };
+  } catch {
+    return DEFAULT_TEXT_INPUT_SETTINGS;
+  }
+}
+
+export function saveTextInputSettings(settings) {
+  localStorage.setItem(
+    STORAGE_KEYS.textInput,
+    JSON.stringify(settings),
+  );
+}
+
+export function updateTextInputSettings(partial) {
+  saveTextInputSettings({
+    ...getTextInputSettings(),
+    ...partial,
+  });
 }
