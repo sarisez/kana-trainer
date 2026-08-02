@@ -51,7 +51,7 @@ function App() {
         <Routes>
           <Route path='/' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
           <Route path='/kana-learning' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
-          <Route path='/alphabet' element={<AlphabetPage />} />
+          <Route path='/alphabet' element={<AlphabetPage transliteration={transliteration} />} />
           <Route path='/settings' element={<SettingsPage
             isLight={isLight}
             setIsLight={setIsLight}

@@ -61,8 +61,8 @@
 }
 
 .symbol__curent {
-  font-weight: 200;
   font-size: 100px;
+  font-weight: 350;
 }
 
 .resultMessage {

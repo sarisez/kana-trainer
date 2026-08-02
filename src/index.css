@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
 *,
 *::before,
@@ -76,7 +77,7 @@ button {
 
 body {
   margin: 0;
-  font-family: "Albert Sans", "Inter", sans-serif;
+  font-family: "Albert Sans", "Inter", "Noto Sans JP", sans-serif;
   font-size: 16px;
   font-weight: var(--light);
 }

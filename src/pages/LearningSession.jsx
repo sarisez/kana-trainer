@@ -139,7 +139,7 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                     placeholder={t("learning", "text-input-placeholder")}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && currentInputText !== "") {
-                        handleAnswer({ romaji: currentInputText });
+                        handleAnswer({ romaji: currentInputText.trim().toLowerCase() });
                         setCurrentInputText("");
                       }
                     }}
@@ -148,7 +148,7 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                     <button
                       onClick={() => {
                         if (currentInputText !== "") {
-                          handleAnswer({ romaji: currentInputText });
+                          handleAnswer({ romaji: currentInputText.trim().toLowerCase() });
                           setCurrentInputText("");
                         }
                       }}
