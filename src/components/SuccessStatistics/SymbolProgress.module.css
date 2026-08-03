@@ -15,19 +15,19 @@
   overflow-y: auto;
 }
 
-.symbol__info {
+.symbolInfo {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.symbol__progress__body {
+.symbolProgressBody {
   height: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
-.symbol__progress__line {
+.symbolProgressLine {
   border-radius: 10px;
 }
 

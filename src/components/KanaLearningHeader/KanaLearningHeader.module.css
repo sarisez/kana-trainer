@@ -11,44 +11,6 @@
   gap: 50px;
 }
 
-/* HeaderIcon */
-
-.icon {
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  cursor: pointer;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.icon__img {
-  width: 24px;
-  height: 24px;
-  color: var(--color-text-secondary);
-}
-
-.active {
-  color: var(--color-text)
-}
-
-.text {
-  color: var(--color-secondary);
-  margin-top: 10px;
-  display: none;
-  transition: display 2s 0.5s;
-}
-
-.text__active {
-  color: var(--color-text-secondary);
-}
-
-.icon:hover .text {
-  display: block;
-}
-
 .level {
   width: 100%;
   max-width: 702px;
@@ -61,6 +23,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* HeaderIcon */
+
+.icon {
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  cursor: pointer;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.iconImg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-secondary);
+}
+
+.iconActive {
+  color: var(--color-text)
+}
+
+.icon:hover .text {
+  opacity: 1;
+}
+
+.text {
+  color: var(--color-secondary);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .1s;
+}
+
+.textActive {
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 600px) {

@@ -55,7 +55,7 @@ export function AlphabetPage({ transliteration }) {
               {renderAlphabet(item => item.level === 10, translitTable)}
             </div>
 
-            <div className={`${styles.items} ${styles.item__red}`}>
+            <div className={`${styles.items} ${styles.itemRed}`}>
               {renderAlphabet(item => item.level >= 11 && item.level <= 15, translitTable)}
             </div>
           </div>

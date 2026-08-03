@@ -73,10 +73,10 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
   return (
     <>
       <div className={styles.container}>
-        <div className="kana-learning-left-block">
+        <div>
           <SymbolProgress userStats={userStats} />
         </div>
-        <div className={styles.rightBlock}>
+        <div className={styles.content}>
           <KanaLearningHeader
             mode={mode}
             level={userStats.level}
@@ -85,13 +85,13 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
             onImport={() => handleImport()}
             onReset={() => resetProgress()}
           />
-          <div className={styles.symbol__container}>
-            <p className={styles.symbol__curent}>{currentSymbol.symbol}</p>
+          <div className={styles.symbolContainer}>
+            <p className={styles.symbolCurent}>{currentSymbol.symbol}</p>
             {feedback &&
               <div
                 className={`${styles.resultMessage} ${feedback.isCorrect
-                  ? styles.resultMessage__green
-                  : styles.resultMessage__red
+                  ? styles.resultMessageGreen
+                  : styles.resultMessageRed
                   }`}
               >
                 {message}
@@ -109,7 +109,7 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                   }`}
               >
                 {textInputSettings.suggestions &&
-                  <div className={styles.suggestions__wrapper}>
+                  <div className={styles.suggestionsWrapper}>
                     <div className={styles.suggestions}>
                       {suggestions?.map((option, index) => (
                         <button
@@ -120,11 +120,11 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                             setCurrentInputText("");
                           }}
                         >
-                          <p className={styles.button__text__main}>
+                          <p className={styles.buttonMainText}>
                             {option.romaji}
                           </p>
                           {translitTable &&
-                            <p className={styles.button__text__secondary}>
+                            <p className={styles.buttonSecondaryText}>
                               {translitTable[option.romaji] ?? option.romaji}
                             </p>
                           }
@@ -132,7 +132,7 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                       ))}
                     </div>
                   </div>}
-                <div className={styles.textInput__input}>
+                <div className={styles.textInputInput}>
                   <input
                     type="text"
                     value={currentInputText}
@@ -168,11 +168,11 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
                     className={styles.button}
                     onClick={() => handleAnswer(option)}
                   >
-                    <p className={styles.button__text__main}>
+                    <p className={styles.buttonMainText}>
                       {option.romaji}
                     </p>
                     {translitTable &&
-                      <p className={styles.button__text__secondary}>
+                      <p className={styles.buttonSecondaryText}>
                         {translitTable[option.romaji] ?? option.romaji}
                       </p>
                     }

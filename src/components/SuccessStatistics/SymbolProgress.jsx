@@ -41,15 +41,15 @@ export function SymbolProgress({ userStats }) {
               .sort((a, b) => b.progress - a.progress)
               .map(({ symbol, progress, stat }) => (
                 <div key={symbol}>
-                  <div className={styles.symbol__info}>
+                  <div className={styles.symbolInfo}>
                     <div>{symbol}</div>
                     <div>{stat.correct} / {stat.mistakes}</div>
                     <div>{progress.toFixed(0)}%</div>
                   </div>
                   <ProgressBar
                     progress={progress}
-                    className={styles.symbol__progress__body}
-                    lineClassName={styles.symbol__progress__line}
+                    className={styles.symbolProgressBody}
+                    lineClassName={styles.symbolProgressLine}
                   />
                 </div>
               ))}

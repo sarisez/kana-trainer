@@ -41,7 +41,7 @@
   gap: 5px;
 }
 
-.item__red .item {
+.itemRed .item {
   background-color: hsla(0, 100%, 76%, 0.2);
 }
 
