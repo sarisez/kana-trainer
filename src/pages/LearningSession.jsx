@@ -24,13 +24,14 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
 
   const { t } = useLanguage();
 
-  const uniqueOptions = [
-    ...new Map(
-      [...availableOptions].reverse().map(option => [option.romaji, option])
-    )
-      .values(),
-  ].reverse();
-
+  const uniqueOptions = useMemo(() => {
+    return [
+      ...new Map(
+        availableOptions.map(option => [option.romaji, option])
+      ).values(),
+    ];
+  }, [availableOptions]);
+  
   async function handleImport() {
     const backup = await importBackup();
 
@@ -64,10 +65,10 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
 
     if (!text) return [];
 
-    return availableOptions.filter(option =>
+    return uniqueOptions.filter(option =>
       option.romaji.includes(text)
     );
-  }, [currentInputText, availableOptions]);
+  }, [currentInputText, uniqueOptions]);
 
   return (
     <>
