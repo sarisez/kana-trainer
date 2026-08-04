@@ -1,3 +1,5 @@
+import { LEARNING_CONFIG } from "../config/learning";
+
 const getRandomItem = (array) =>
   array[Math.floor(Math.random() * array.length)];
 
@@ -38,11 +40,11 @@ export function getNewSymbol(prev, availableOptions, worstWinRateSymbol, leastCo
 }
 
 export function levelUp(stats, requiredCorrectAnswers) {
-  const canLevelUp = Object.values(stats.symbols)
+  const canLevelUp = stats.level < LEARNING_CONFIG.maxLevel && Object.values(stats.symbols)
     .filter((s) => s.level <= stats.level)
     .every((stat) => {
       const total = stat.correct + stat.mistakes;
-      return total >= requiredCorrectAnswers && stat.correct / total >= 0.9;
+      return total >= requiredCorrectAnswers && stat.correct / total >= LEARNING_CONFIG.requiredAccuracy;
     });
 
   return canLevelUp ? stats.level + 1 : stats.level;

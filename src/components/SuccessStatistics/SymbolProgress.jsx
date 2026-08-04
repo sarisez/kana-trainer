@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LEARNING_CONFIG } from "../../config/learning.js";
 import { ProgressBar } from "../ProgressBar/ProgressBar.jsx";
 
 import ArrowRight from "../../assets/icons/ArrowRight.jsx"
@@ -10,6 +11,23 @@ export function SymbolProgress({ userStats }) {
   const [isOpen, setIsOpen] = useState(false);
 
   if (!userStats?.symbols) return null;
+
+  function calcGoal(stat) {
+    const { correct, mistakes } = stat;
+    const total = correct + mistakes;
+
+    const answersRemaining = Math.max(0, 
+      LEARNING_CONFIG.requiredCorrectAnswers - total);
+
+    const correctAnswersRequired =
+      (LEARNING_CONFIG.requiredAccuracy * total - correct) /
+      (1 - LEARNING_CONFIG.requiredAccuracy);
+
+    const correctAnswersRemaining = Math.max(0, Math.ceil(
+      correctAnswersRequired - 1e-10));
+
+    return Math.max(answersRemaining, correctAnswersRemaining);
+  }
 
   return (
     <>
@@ -39,20 +57,29 @@ export function SymbolProgress({ userStats }) {
                 };
               })
               .sort((a, b) => b.progress - a.progress)
-              .map(({ symbol, progress, stat }) => (
-                <div key={symbol}>
-                  <div className={styles.symbolInfo}>
-                    <div>{symbol}</div>
-                    <div>{stat.correct} / {stat.mistakes}</div>
-                    <div>{progress.toFixed(0)}%</div>
+              .map(({ symbol, progress, stat }) => {
+                const goal = calcGoal(stat);
+
+                return (
+                  <div key={symbol}>
+                    <div className={styles.symbolInfo}>
+                      <div>{symbol}</div>
+                      <div className={styles.stats}>
+                        <span className={styles.goal}>
+                          {goal > 0 && `${goal} →`}
+                        </span>
+                        {stat.correct} / {stat.mistakes}
+                      </div>
+                      <div>{progress.toFixed(0)}%</div>
+                    </div>
+                    <ProgressBar
+                      progress={progress}
+                      className={styles.symbolProgressBody}
+                      lineClassName={styles.symbolProgressLine}
+                    />
                   </div>
-                  <ProgressBar
-                    progress={progress}
-                    className={styles.symbolProgressBody}
-                    lineClassName={styles.symbolProgressLine}
-                  />
-                </div>
-              ))}
+                )
+              })}
           </div>
           <button
             onClick={() => setIsOpen(false)}

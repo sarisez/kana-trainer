@@ -1,13 +1,12 @@
 import { useState, useMemo, useRef } from "react";
 
+import { LEARNING_CONFIG } from "../config/learning.js";
 import { getRandomSymbol, checkAnswer, getNewSymbol, levelUp, getLeastCorrectSymbol, getWorstWinRateSymbol } from "../utils/kanaUtils";
 import { hiragana } from "../data/hiragana.js";
 import { katakana } from "../data/katakana.js";
 import { getStats, recordAnswer, saveStats, resetStats } from "../utils/storage.js";
 
 export function useLearningSession(mode) {
-  const requiredCorrectAnswers = 10;
-
   const [userStats, setUserStats] = useState(() => getStats(mode));
 
   const options = useMemo(() => {
@@ -64,15 +63,13 @@ export function useLearningSession(mode) {
         correctAnswer: currentSymbol.romaji,
       });;
 
-    // : `Неправильно. Правильна відповідь: ${currentSymbol.translation} / ${currentSymbol.romaji}`;
-
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
 
     timeoutRef.current = setTimeout(() => {
       setUserStats((prevStats) => {
-        const newLevel = levelUp(prevStats, requiredCorrectAnswers);
+        const newLevel = levelUp(prevStats, LEARNING_CONFIG.requiredCorrectAnswers);
 
         const updated = {
           ...prevStats,

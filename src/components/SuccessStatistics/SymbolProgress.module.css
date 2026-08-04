@@ -19,6 +19,24 @@
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.stats {
+  position: relative;
+}
+
+.goal {
+  width: max-content;
+  height: 100%;
+  color: var(--color-text-secondary);
+
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  right: calc(100% + 8px);
+  transform: translateY(-1.2px);
 }
 
 .symbolProgressBody {
