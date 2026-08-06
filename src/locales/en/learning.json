@@ -9,5 +9,10 @@
   "correct-answer": "Correct!",
   "wrong-answer": "Wrong. The correct answer is:",
   "text-input-button": "Submit",
-  "text-input-placeholder": "Your answer"
+  "text-input-placeholder": "Your answer",
+  
+  "resetConfirmationTitle": "Reset progress?",
+  "resetConfirmationMessage": "Your current progress will be reset. Are you sure you want to continue?",
+  "resetConfirmationConfirmText": "Reset",
+  "resetConfirmationCancelText": "Cancel"
 }

@@ -9,5 +9,10 @@
   "correct-answer": "Правильно!",
   "wrong-answer": "Неправильно. Правильна відповідь:",
   "text-input-button": "Підтвердити",
-  "text-input-placeholder": "Ваша відповідь"
+  "text-input-placeholder": "Ваша відповідь",
+  
+  "resetConfirmationTitle": "Скинути прогрес?",
+  "resetConfirmationMessage": "Ваш поточний прогрес буде скинуто. Ви впевнені, що хочете продовжити?",
+  "resetConfirmationConfirmText": "Скинути",
+  "resetConfirmationCancelText": "Скасувати"
 }

@@ -1,0 +1,71 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: hsla(260, 33%, 5%, 0.7);
+}
+
+.modal {
+  max-width: 600px;
+  background-color: var(--color-background);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.titleWrapper button {
+  color: var(--color-text-secondary);
+  margin-left: 10px;
+}
+
+.modal h3 {
+  font-size: 18px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons button {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  margin-top: 10px;
+
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.buttons button:hover {
+  background:
+    linear-gradient(var(--color-background-50), var(--color-background-50)),
+    var(--color-surface);
+}
+
+.buttons .accent {
+  background-color: var(--color-primary);
+  color: #FBFAFB;
+}
+
+.buttons .accent:hover {
+  background: 
+    linear-gradient(var(--color-surface-25), var(--color-surface-25)),
+    var(--color-primary);
+}
