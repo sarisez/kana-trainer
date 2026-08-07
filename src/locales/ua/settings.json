@@ -1,4 +1,6 @@
 {
+  "general": "Основні",
+  "progress": "Прогрес",
   "language": "Мова",
   "theme": "Тема",
   "light": "Світла",
@@ -7,5 +9,7 @@
   "none": "Ніякої",
   "text-input": "Текстове введення",
   "enable-text-input": "Увімкнути текстове введення",
-  "input-suggestions": "Пропозиції введення"
+  "input-suggestions": "Пропозиції введення",
+  "mode": "Режим",
+  "progress-management": "Керування прогресом"
 }

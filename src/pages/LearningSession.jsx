@@ -35,8 +35,6 @@ export function LearningSession({ mode, transliteration, textInputSettings }) {
   async function handleImport() {
     const backup = await importBackup();
 
-    console.log(backup);
-
     if (!backup) return;
 
     if (backup.mode !== mode) {

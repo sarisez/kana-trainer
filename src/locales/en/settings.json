@@ -1,4 +1,6 @@
 {
+  "general": "General",
+  "progress": "Progress",
   "language": "Language",
   "theme": "Theme",
   "light": "Light",
@@ -7,5 +9,7 @@
   "none": "None",
   "text-input": "Text input",
   "enable-text-input": "Enable text input",
-  "input-suggestions": "Input suggestions"
+  "input-suggestions": "Input suggestions",
+  "mode": "Mode",
+  "progress-management": "Progress Management"
 }

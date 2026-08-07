@@ -23,10 +23,10 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
     <>
       <ConfirmationDialog
         open={isResetConfirmationOpen}
-        title={t("learning", "resetConfirmationTitle")}
-        message={t("learning", "resetConfirmationMessage")}
-        confirmText={t("learning", "resetConfirmationConfirmText")}
-        cancelText={t("learning", "resetConfirmationCancelText")}
+        title={t("dialogs", "resetConfirmationTitle")}
+        message={t("dialogs", "resetConfirmationMessage")}
+        confirmText={t("common", "reset")}
+        cancelText={t("common", "cancel")}
         onConfirm={() => {
           onReset();
           setIsResetConfirmationOpen(false)
@@ -44,7 +44,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "hiragana-mode")}
+              text={t("common", "hiragana-mode")}
               active={mode === "hiragana"}
             />
           </Link>
@@ -56,7 +56,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "both-mode")}
+              text={t("common", "both-mode")}
               active={mode === "both"}
             />
           </Link>
@@ -68,7 +68,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "katakana-mode")}
+              text={t("common", "katakana-mode")}
               active={mode === "katakana"}
             />
           </Link>
@@ -85,7 +85,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "reset")}
+              text={t("common", "reset")}
             />
           </button>
           <button onClick={() => onImport()}>
@@ -96,7 +96,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "import")}
+              text={t("common", "import")}
             />
           </button>
           <button onClick={() => onExport()}>
@@ -107,7 +107,7 @@ export function KanaLearningHeader({ mode, level, onExport, onImport, onReset })
                 width={24}
                 height={24}
               />}
-              text={t("learning", "export")}
+              text={t("common", "export")}
             />
           </button>
         </div>

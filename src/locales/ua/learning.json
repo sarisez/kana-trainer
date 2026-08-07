@@ -1,18 +1,7 @@
 {
-  "hiragana-mode": "Хіраґана",
-  "both-mode": "Обидві",
-  "katakana-mode": "Катакана",
-  "reset": "Скинути",
-  "import": "Імпортувати",
-  "export": "Експортувати",
   "level": "Рівень",
   "correct-answer": "Правильно!",
   "wrong-answer": "Неправильно. Правильна відповідь:",
   "text-input-button": "Підтвердити",
-  "text-input-placeholder": "Ваша відповідь",
-  
-  "resetConfirmationTitle": "Скинути прогрес?",
-  "resetConfirmationMessage": "Ваш поточний прогрес буде скинуто. Ви впевнені, що хочете продовжити?",
-  "resetConfirmationConfirmText": "Скинути",
-  "resetConfirmationCancelText": "Скасувати"
+  "text-input-placeholder": "Ваша відповідь"
 }

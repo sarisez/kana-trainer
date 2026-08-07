@@ -9,6 +9,7 @@ const STORAGE_KEYS = {
   language: "language",
   transliteration: "transliteration",
   textInput: "text-input",
+  modeKey: "mode",
 };
 
 const getStorageKey = (mode) => STORAGE_KEYS[mode] ?? STORAGE_KEYS.both;
@@ -183,4 +184,17 @@ export function updateTextInputSettings(partial) {
     ...getTextInputSettings(),
     ...partial,
   });
+}
+
+export function getMode() {
+  const storedMode = localStorage.getItem(STORAGE_KEYS.modeKey);
+ 
+  if (storedMode === null)
+    return "hiragana";
+  else
+    return storedMode;
+}
+
+export function saveMode(mode) {
+  localStorage.setItem(STORAGE_KEYS.modeKey, mode);
 }

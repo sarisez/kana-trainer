@@ -1,0 +1,9 @@
+{
+  "hiragana-mode": "Hiragana",
+  "both-mode": "Both",
+  "katakana-mode": "Katakana",
+  "reset": "Reset",
+  "import": "Import",
+  "export": "Export",
+  "cancel": "Cancel"
+}

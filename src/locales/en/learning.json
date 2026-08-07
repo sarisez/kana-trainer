@@ -1,18 +1,7 @@
 {
-  "hiragana-mode": "Hiragana",
-  "both-mode": "Both",
-  "katakana-mode": "Katakana",
-  "reset": "Reset",
-  "import": "Import",
-  "export": "Export",
   "level": "Level",
   "correct-answer": "Correct!",
   "wrong-answer": "Wrong. The correct answer is:",
   "text-input-button": "Submit",
-  "text-input-placeholder": "Your answer",
-  
-  "resetConfirmationTitle": "Reset progress?",
-  "resetConfirmationMessage": "Your current progress will be reset. Are you sure you want to continue?",
-  "resetConfirmationConfirmText": "Reset",
-  "resetConfirmationCancelText": "Cancel"
+  "text-input-placeholder": "Your answer"
 }

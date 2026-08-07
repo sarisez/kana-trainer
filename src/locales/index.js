@@ -4,14 +4,23 @@ import enLearning from "./en/learning.json";
 import uaSettings from "./ua/settings.json";
 import enSettings from "./en/settings.json";
 
-export const translations = {
-    ua: {
-        learning: uaLearning,
-        settings: uaSettings,
-    },
+import uaDialogs from "./ua/dialogs.json";
+import enDialogs from "./en/dialogs.json";
 
-    en: {
-        learning: enLearning,
-        settings: enSettings,
-    }
+import uaCommon from "./ua/common.json";
+import enCommon from "./en/common.json";
+
+export const translations = {
+  ua: {
+    learning: uaLearning,
+    settings: uaSettings,
+    dialogs: uaDialogs,
+    common: uaCommon,
+  },
+  en: {
+    learning: enLearning,
+    settings: enSettings,
+    dialogs: enDialogs,
+    common: enCommon,
+  },
 };

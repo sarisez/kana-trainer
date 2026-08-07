@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router'
+import { Navigate, Routes, Route } from 'react-router'
 import { useState, useEffect } from 'react';
 
 import { KanaLearningPage } from './pages/KanaLearningPage'
@@ -7,10 +7,11 @@ import { SettingsPage } from './pages/SettingsPage.jsx';
 
 import { Menu } from './components/Menu/Menu.jsx';
 
-import { 
-  getTheme, saveTheme, 
+import {
+  getTheme, saveTheme,
   getTransliteration, saveTransliteration,
-  getTextInputSettings, updateTextInputSettings
+  getTextInputSettings, updateTextInputSettings,
+  getMode, saveMode,
 } from './utils/storage.js';
 
 import "./App.css";
@@ -40,6 +41,12 @@ function App() {
     updateTextInputSettings(partial);
   };
 
+  const [mode, setMode] = useState(getMode);
+
+  useEffect(() => {
+    saveMode(mode);
+  }, [mode]);
+
   return (
     <div className='App' data-theme={isLight ? "light" : "dark"}>
       <Menu
@@ -49,17 +56,43 @@ function App() {
 
       <div className='container'>
         <Routes>
-          <Route path='/' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
-          <Route path='/kana-learning' element={<KanaLearningPage transliteration={transliteration} textInputSettings={textInputSettings} />} />
-          <Route path='/alphabet' element={<AlphabetPage transliteration={transliteration} />} />
-          <Route path='/settings' element={<SettingsPage
-            isLight={isLight}
-            setIsLight={setIsLight}
-            transliteration={transliteration}
-            setTransliteration={setTransliteration}
-            textInputSettings={textInputSettings}
-            updateTextInputSettings={updateSettings}
-          />} />
+          <Route
+            path='/'
+            element={<Navigate to={`/kana-learning?mode=${mode}`} replace />}
+          />
+          <Route
+            path='/kana-learning'
+            element={
+              <KanaLearningPage
+                mode={mode}
+                setMode={setMode}
+                transliteration={transliteration}
+                textInputSettings={textInputSettings}
+              />
+            }
+          />
+          <Route
+            path='/alphabet'
+            element={
+              <AlphabetPage
+                transliteration={transliteration} />
+            }
+          />
+          <Route
+            path='/settings'
+            element={
+              <SettingsPage
+                isLight={isLight}
+                setIsLight={setIsLight}
+                transliteration={transliteration}
+                setTransliteration={setTransliteration}
+                textInputSettings={textInputSettings}
+                updateTextInputSettings={updateSettings}
+                mode={mode}
+                setMode={setMode}
+              />
+            }
+          />
         </Routes>
       </div>
     </ div>
